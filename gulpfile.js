@@ -10,6 +10,7 @@ var _ = require('lodash'),
   testConfig = require('./config/env/test'),
   glob = require('glob'),
   gulp = require('gulp'),
+  apidoc = require('gulp-apidoc'),
   gulpLoadPlugins = require('gulp-load-plugins'),
   runSequence = require('run-sequence'),
   plugins = gulpLoadPlugins({
@@ -247,6 +248,17 @@ gulp.task('wiredep:prod', function () {
     .pipe(gulp.dest('config/assets/'));
 });
 
+// APIDOC Documentation Task
+
+gulp.task('gen-doc',function(done){
+  apidoc({
+    src: "modules/users/server/controllers/",
+    dest: "apidoc/",
+    template: "config/doctmpl/",
+    debug: true
+  },done);
+});
+
 // Copy local development environment config example
 gulp.task('copyLocalEnvConfig', function () {
   var src = [];
@@ -445,7 +457,7 @@ gulp.task('lint', function (done) {
 
 // Lint project files and minify them into two production files.
 gulp.task('build', function (done) {
-  runSequence('env:dev', 'wiredep:prod', 'lint', ['uglify', 'cssmin'], done);
+  runSequence('env:dev', 'wiredep:prod', 'lint', ['uglify', 'cssmin'], 'gen-doc', done);
 });
 
 // Run the project tests
@@ -476,7 +488,7 @@ gulp.task('test:coverage', function (done) {
 
 // Run the project in development mode with node debugger enabled
 gulp.task('default', function (done) {
-  runSequence('env:dev', ['copyLocalEnvConfig', 'makeUploadsDir'], 'lint', ['nodemon', 'watch'], done);
+  runSequence('env:dev', ['copyLocalEnvConfig', 'makeUploadsDir'], 'lint', ['nodemon', 'watch'], 'gen-doc', done);
 });
 
 // Run the project in production mode
