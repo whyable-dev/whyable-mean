@@ -5,14 +5,24 @@
   angular
     .module(app.applicationModuleName, app.applicationModuleVendorDependencies);
 
+  angular
+    .module(app.applicationModuleName)
+    .constant('LOCALES', {
+      'locales': {
+        'ru_RU': 'Русский',
+        'en_US': 'English'
+      },
+      'preferredLocale': 'en_US'
+    });
+
   // Setting HTML5 Location Mode
   angular
     .module(app.applicationModuleName)
     .config(bootstrapConfig);
 
-  bootstrapConfig.$inject = ['$compileProvider', '$locationProvider', '$httpProvider', '$logProvider'];
+  bootstrapConfig.$inject = ['$compileProvider', '$locationProvider', '$httpProvider', '$logProvider', '$translateProvider', 'tmhDynamicLocaleProvider'];
 
-  function bootstrapConfig($compileProvider, $locationProvider, $httpProvider, $logProvider) {
+  function bootstrapConfig($compileProvider, $locationProvider, $httpProvider, $logProvider, $translateProvider, tmhDynamicLocaleProvider) {
     $locationProvider.html5Mode({
       enabled: true,
       requireBase: false
@@ -24,6 +34,17 @@
     // @link https://docs.angularjs.org/guide/production
     $compileProvider.debugInfoEnabled(app.applicationEnvironment !== 'production');
     $logProvider.debugEnabled(app.applicationEnvironment !== 'production');
+
+    $translateProvider.useMissingTranslationHandlerLog();
+    $translateProvider.useStaticFilesLoader({
+      prefix: 'modules/core/client/translations/locale-',
+      suffix: '.json'
+    });
+
+    $translateProvider.preferredLanguage('en_US');
+    $translateProvider.useSanitizeValueStrategy('escape');
+    $translateProvider.useLocalStorage(); // saves selected language to localStorage
+    tmhDynamicLocaleProvider.localeLocationPattern('public/lib/angular-i18n/angular-locale_{{locale}}.js');
   }
 
 

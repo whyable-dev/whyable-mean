@@ -15,7 +15,11 @@
     "bootstrap": "~3.3.7",
     "ng-file-upload": "~12.2.13",
     "owasp-password-strength-test": "~1.3.0",
-    "animate.css": "^3.5.2"
+    "animate.css": "^3.5.2",
+    "angular-dynamic-locale": "^0.1.32",
+    "angular-translate-storage-local": "^2.15.1",
+    "angular-translate-handler-log": "^2.15.1",
+    "angular-i18n": "^1.6.4"
   },
   "overrides": {
     "bootstrap": {
@@ -28,5 +32,8 @@
     "jquery": {
       "main": []
     }
+  },
+  "devDependencies": {
+    "angular-translate": "^2.15.1"
   }
 }

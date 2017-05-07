@@ -11,6 +11,7 @@ var _ = require('lodash'),
   glob = require('glob'),
   gulp = require('gulp'),
   apidoc = require('gulp-apidoc'),
+  obfuscate = require('gulp-obfuscate'),
   gulpLoadPlugins = require('gulp-load-plugins'),
   runSequence = require('run-sequence'),
   plugins = gulpLoadPlugins({
@@ -488,7 +489,7 @@ gulp.task('test:coverage', function (done) {
 
 // Run the project in development mode with node debugger enabled
 gulp.task('default', function (done) {
-  runSequence('env:dev', ['copyLocalEnvConfig', 'makeUploadsDir'], 'lint', ['nodemon', 'watch'], 'gen-doc', done);
+  runSequence('env:dev', ['copyLocalEnvConfig', 'makeUploadsDir'], 'lint', ['nodemon', 'watch'], done);
 });
 
 // Run the project in production mode
