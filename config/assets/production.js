@@ -31,7 +31,6 @@ module.exports = {
         'public/lib/angular-translate-storage-cookie/angular-translate-storage-cookie.min.js',
         'public/lib/angular-translate-storage-local/angular-translate-storage-local.min.js',
         'public/lib/angular-translate-handler-log/angular-translate-handler-log.min.js',
-        'public/lib/angular-translate-loader-static-files/angular-translate-loader-static-files.js'
         // endbower
       ]
     },

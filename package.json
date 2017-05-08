@@ -1,9 +1,9 @@
 {
-  "name": "meanjs",
-  "description": "Full-Stack JavaScript with MongoDB, Express, AngularJS, and Node.js.",
-  "version": "0.5.0",
-  "meanjs-version": "0.5.0",
-  "private": false,
+  "name": "Rippler",
+  "description": "MEAN stack boilerplate for Whyable projects",
+  "version": "0.1.0",
+  "meanjs-version": "0.1.0",
+  "private": true,
   "author": "https://github.com/meanjs/mean/graphs/contributors",
   "license": "MIT",
   "repository": {
@@ -13,6 +13,10 @@
   "engines": {
     "node": ">=6.3.0",
     "npm": ">=3.10.8"
+  },
+  "apidoc": {
+    "title": "Explore APIs",
+    "url": "http://whyable.com"
   },
   "scripts": {
     "update": "npm update && npm prune && bower install --allow-root && bower prune --allow-root",

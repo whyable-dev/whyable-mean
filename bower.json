@@ -1,7 +1,7 @@
 {
-  "name": "meanjs",
-  "description": "Fullstack JavaScript with MongoDB, Express, AngularJS, and Node.js.",
-  "homepage": "http://meanjs.org/",
+  "name": "Rippler",
+  "description": "MEAN stack boilerplate for Whyable projects",
+  "homepage": "http://whyable.com/",
   "license": "MIT",
   "dependencies": {
     "angular": "~1.6.4",

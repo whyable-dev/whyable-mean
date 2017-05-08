@@ -68,20 +68,15 @@ Fixes #82
 ## Submitting the Pull Request
 
 * Push your changes to your topic branch on your fork of the repo.
-* Submit a pull request from your topic branch to the master branch on the MEAN.JS repository.
+* Submit a pull request from your topic branch to the master branch on the repository.
 * Be sure to tag any issues your pull request is taking care of / contributing to.
 	* By adding "Closes #xyz" to a commit message will auto close the issue once the pull request is merged in.
 * Small changes are usually accepted and merged in within a week (provided that 2 collaborators give the okay)
 * Larger changes usually spark further discussion and possible changes prior to being merged in.
 
-## Documentation (meanjs.org)
-
-The code for the documentation and the website are located in the meanjs/mean repo on the gh-pages branch. The website is hosted by github pages and generated using jekyll. See the README in the gh-pages branch for more information on how to get your dev enviorment set-up.
 
 ## Generating a new Release
 
 For those who will be generating releases:
 * Don't forget to update the changelog!
-  * Install the changelog cli tool: `npm install conventional-changelog-cli`
-  * Generate the updated changelog `node_modules/.bin/conventional-changelog -r 1 > /tmp/release && cat CHANGELOG.md >> /tmp/release && cat /tmp/release > CHANGELOG.md && rm /tmp/release`
-	* Review, and commit changes
+

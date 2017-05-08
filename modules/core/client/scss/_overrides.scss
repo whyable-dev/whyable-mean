@@ -6,3 +6,12 @@
     color: $white;
   }
 }
+
+.navbar-brand {
+  img{
+    max-width: 48px;
+    max-height: 48px;
+    position: relative;
+    top:-11px;
+  }
+}
