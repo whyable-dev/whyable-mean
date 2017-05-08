@@ -144,5 +144,5 @@ $ gulp prod
 It is also possible to run any Gulp tasks using npm's run command and therefore use locally installed version of gulp, for example: `npm run gulp eslint`
 
 ## Contributing
-Pull requests are welcome. Just be sure to read the [contributing](https://github.com/meanjs/mean/blob/master/CONTRIBUTING.md) doc to get started.
+Pull requests are welcome. Just be sure to read the [contributing](https://github.com/whyable-dev/whyable-mean/CONTRIBUTING.md) doc to get started.
 
