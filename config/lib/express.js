@@ -19,7 +19,8 @@ var config = require('../config'),
   hbs = require('express-hbs'),
   path = require('path'),
   _ = require('lodash'),
-  lusca = require('lusca');
+  lusca = require('lusca'),
+  winston = require('winston');
 
 /**
  * Initialize local variables
@@ -206,6 +207,32 @@ module.exports.initErrorRoutes = function (app) {
 };
 
 /**
+ * Configure the API documentation routes
+ */
+module.exports.initApiDocs = function (app) {
+  // Setting the app router and static folder
+  app.use('/docs', express.static(path.resolve('./apidoc')));
+
+  // Globbing static routing
+  config.folders.client.forEach(function (staticPath) {
+    app.use(staticPath, express.static(path.resolve('./' + staticPath)));
+  });
+};
+
+/**
+ * Configure the API documentation routes
+ */
+module.exports.initReleaseDocs = function (app) {
+  // Setting the app router and static folder
+  app.use('/release', express.static(path.resolve('./release')));
+
+  // Globbing static routing
+  config.folders.client.forEach(function (staticPath) {
+    app.use(staticPath, express.static(path.resolve('./' + staticPath)));
+  });
+};
+
+/**
  * Configure Socket.io
  */
 module.exports.configureSocketIO = function (app, db) {
@@ -234,6 +261,12 @@ module.exports.init = function (db) {
 
   // Initialize Helmet security headers
   this.initHelmetHeaders(app);
+
+  // Initialize API docs
+  this.initApiDocs(app);
+
+  // Initialize Release docs
+  this.initReleaseDocs(app);
 
   // Initialize modules static client routes, before session!
   this.initModulesClientRoutes(app);
